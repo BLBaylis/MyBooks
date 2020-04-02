@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Search from './views/Search'
 import Library from './views/Library'
-import bookService from './services/books'
 import './App.css';
 
 class App extends Component {
@@ -9,15 +8,6 @@ class App extends Component {
   state = {
     books: [],
     showSearchPage: false
-  }
-
-  getBooksData = async () => {
-    const books = await bookService.getAll()
-    this.setState({ books })
-  }
-
-  componentDidMount() {
-    this.getBooksData()
   }
 
   setShowSearchPage = status => this.setState({ showSearchPage: status })

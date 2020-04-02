@@ -10,11 +10,11 @@ const BookShelf = ({ name, books }) => {
                 <ol className="books-grid">
                 {books.map(book => (
                     <li key = {`${book.id}-li`}>
-                    <Book 
-                        title = {book.title}
-                        authors = {book.authors}
-                        imageUrl = {book.imageLinks.thumbnail}
-                    />
+                        <Book 
+                            title = {book.title}
+                            authors = {book.authors}
+                            imageUrl = {book.imageLinks.thumbnail}
+                        />
                     </li>
                 ))}
                 </ol>
@@ -25,7 +25,7 @@ const BookShelf = ({ name, books }) => {
 
 BookShelf.propTypes = {
     name: PropTypes.string.isRequired,
-    authors: PropTypes.arrayOf(PropTypes.object).isRequired
+    books: PropTypes.arrayOf(PropTypes.object).isRequired
 }
 
 export default BookShelf
