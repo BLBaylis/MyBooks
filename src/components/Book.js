@@ -18,7 +18,7 @@ const Book = ({ title, authors, imageUrl }) => {
             </div>
             </div>
             <div className="book-title">{title}</div>
-            <div className="book-authors">{authors}</div>
+            <div className="book-authors">{authors.join(", ").trim()}</div>
         </div>
     )
 }

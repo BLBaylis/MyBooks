@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom'
 import Search from './views/Search'
 import Library from './views/Library'
 import './App.css';
@@ -15,10 +16,8 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        {this.state.showSearchPage ?
-          <Search closeSearch = {() => this.setShowSearchPage(false)} /> : 
-          <Library books = {this.state.books} openSearch = {() => this.setShowSearchPage(true)}/>
-        }
+        <Route exact path = "/" render = {() => <Library books = {this.state.books}/>} />
+        <Route path = "/search" component = {Search}/>
       </div>
     )
   }
