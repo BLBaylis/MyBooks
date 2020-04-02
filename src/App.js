@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import BookShelf from './components/BookShelf'
 import Book from './components/Book'
 import bookService from './services/books'
 import './App.css';
@@ -49,54 +50,9 @@ class App extends Component {
             </div>
             <div className="list-books-content">
               <div>
-                <div className="bookshelf">
-                  <h2 className="bookshelf-title">Currently Reading</h2>
-                  <div className="bookshelf-books">
-                    <ol className="books-grid">
-                      {this.state.books.map(book => (
-                        <li key = {`${book.id}-li`}>
-                          <Book 
-                            title = {book.title}
-                            authors = {book.authors}
-                            imageUrl = {book.imageLinks.thumbnail}
-                          />
-                        </li>
-                      ))}
-                    </ol>
-                  </div>
-                </div>
-                <div className="bookshelf">
-                  <h2 className="bookshelf-title">Want to Read</h2>
-                  <div className="bookshelf-books">
-                    <ol className="books-grid">
-                    {this.state.books.map(book => (
-                        <li key = {`${book.id}-li`}>
-                          <Book 
-                            title = {book.title}
-                            authors = {book.authors}
-                            imageUrl = {book.imageLinks.thumbnail}
-                          />
-                        </li>
-                      ))}
-                    </ol>
-                  </div>
-                </div>
-                <div className="bookshelf">
-                  <h2 className="bookshelf-title">Read</h2>
-                  <div className="bookshelf-books">
-                    <ol className="books-grid">
-                    {this.state.books.map(book => (
-                        <li key = {`${book.id}-li`}>
-                          <Book 
-                            title = {book.title}
-                            authors = {book.authors}
-                            imageUrl = {book.imageLinks.thumbnail}
-                          />
-                        </li>
-                      ))}
-                    </ol>
-                  </div>
-                </div>
+                <BookShelf name = "Currently Reading" books = {this.state.books} />
+                <BookShelf name = "Want to Read" books = {this.state.books} />
+                <BookShelf name = "Read" books = {this.state.books} />
               </div>
             </div>
             <div className="open-search">
