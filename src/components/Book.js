@@ -18,14 +18,14 @@ const Book = ({ title, authors, imageUrl }) => {
             </div>
             </div>
             <div className="book-title">{title}</div>
-            <div className="book-authors">{authors.join(", ").trim()}</div>
+            <div className="book-authors">{authors && authors.join(", ").trim()}</div>
         </div>
     )
 }
 
 Book.propTypes = {
     title: PropTypes.string.isRequired,
-    authors: PropTypes.arrayOf(PropTypes.string).isRequired,
+    authors: PropTypes.arrayOf(PropTypes.string),
     imageUrl: PropTypes.string.isRequired
 }
 
