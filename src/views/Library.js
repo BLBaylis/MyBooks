@@ -14,9 +14,9 @@ class Library extends Component {
           </div>
           <div className="list-books-content">
             <div>
-              <BookShelf name = "Currently Reading" books = {books} />
-              <BookShelf name = "Want to Read" books = {books} />
-              <BookShelf name = "Read" books = {books} />
+              <BookShelf name = "Currently Reading" books = {books.currentlyReading} />
+              <BookShelf name = "Want to Read" books = {books.wantToRead} />
+              <BookShelf name = "Read" books = {books.read} />
             </div>
           </div>
           <div className="open-search">
@@ -28,7 +28,11 @@ class Library extends Component {
 }
 
 Library.propTypes = {
-  books: PropTypes.arrayOf(PropTypes.object).isRequired
+  books: PropTypes.exact({
+    currentlyReading: PropTypes.arrayOf(PropTypes.object),
+    wantToRead: PropTypes.arrayOf(PropTypes.object),
+    read: PropTypes.arrayOf(PropTypes.object)
+  }).isRequired
 }
 
 export default Library

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 
-const Book = ({ title, authors, imageUrl }) => {
+const Book = ({ title, authors, imageUrl, onShelf = true }) => {
     return (
         <div className="book">
             <div className="book-top">
@@ -13,7 +13,7 @@ const Book = ({ title, authors, imageUrl }) => {
                     <option value="currentlyReading">Currently Reading</option>
                     <option value="wantToRead">Want to Read</option>
                     <option value="read">Read</option>
-                    <option value="none">None</option>
+                    {onShelf && <option value="none">None</option>}
                 </select>
             </div>
             </div>
@@ -26,7 +26,8 @@ const Book = ({ title, authors, imageUrl }) => {
 Book.propTypes = {
     title: PropTypes.string.isRequired,
     authors: PropTypes.arrayOf(PropTypes.string),
-    imageUrl: PropTypes.string.isRequired
+    imageUrl: PropTypes.string.isRequired,
+    onShelf: PropTypes.bool
 }
 
 export default Book
