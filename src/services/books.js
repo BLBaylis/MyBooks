@@ -1,4 +1,4 @@
-const api = "https://reactnd-books-api.udacity.com/books"
+const api = "https://reactnd-books-api.udacity.com"
 
 let token = localStorage.token
 if (!token)
@@ -15,12 +15,12 @@ const get = (bookId) =>
     .then(data => data.book)
 
 const getAll = () =>
-  fetch(api, { headers })
+  fetch(`${api}/books`, { headers })
     .then(res => res.json())
     .then(data => data.books)
 
 const update = (book, shelf) =>
-  fetch(`${api}/${book.id}`, {
+  fetch(`${api}/books/${book.id}`, {
     method: 'PUT',
     headers: {
       ...headers,
@@ -29,4 +29,15 @@ const update = (book, shelf) =>
     body: JSON.stringify({ shelf })
   }).then(res => res.json())
 
-export default { get, getAll, update }
+const search = (query) =>
+fetch(`${api}/search`, {
+  method: 'POST',
+  headers: {
+    ...headers,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ query })
+}).then(res => res.json())
+  .then(data => data.books)
+
+export default { get, getAll, update, search }
