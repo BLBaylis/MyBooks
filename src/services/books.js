@@ -19,8 +19,8 @@ const getAll = () =>
     .then(res => res.json())
     .then(data => data.books)
 
-const update = (book, shelf) =>
-  fetch(`${api}/books/${book.id}`, {
+const update = (bookId, shelf) =>
+  fetch(`${api}/books/${bookId}`, {
     method: 'PUT',
     headers: {
       ...headers,

@@ -6,7 +6,7 @@ import BookShelf from '../components/BookShelf'
 class Library extends Component {
     
     render() {
-      const books = this.props.books
+      const { currentlyReading, wantToRead, read } = this.props
       return (
           <div className="list-books">
           <div className="list-books-title">
@@ -14,9 +14,9 @@ class Library extends Component {
           </div>
           <div className="list-books-content">
             <div>
-              <BookShelf name = "Currently Reading" books = {books.currentlyReading} />
-              <BookShelf name = "Want to Read" books = {books.wantToRead} />
-              <BookShelf name = "Read" books = {books.read} />
+              <BookShelf name = "Currently Reading" books = {currentlyReading} switchShelf = {this.props.switchShelf}/>
+              <BookShelf name = "Want to Read" books = {wantToRead} switchShelf = {this.props.switchShelf}/>
+              <BookShelf name = "Read" books = {read} switchShelf = {this.props.switchShelf}/>
             </div>
           </div>
           <div className="open-search">
@@ -28,11 +28,10 @@ class Library extends Component {
 }
 
 Library.propTypes = {
-  books: PropTypes.exact({
-    currentlyReading: PropTypes.arrayOf(PropTypes.object),
-    wantToRead: PropTypes.arrayOf(PropTypes.object),
-    read: PropTypes.arrayOf(PropTypes.object)
-  }).isRequired
+  currentlyReading: PropTypes.arrayOf(PropTypes.object).isRequired,
+  wantToRead: PropTypes.arrayOf(PropTypes.object).isRequired,
+  read: PropTypes.arrayOf(PropTypes.object).isRequired,
+  switchShelf: PropTypes.func.isRequired
 }
 
 export default Library

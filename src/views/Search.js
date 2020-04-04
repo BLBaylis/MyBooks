@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import Book from '../components/Book'
 import bookService from "../services/books";
@@ -28,7 +29,6 @@ class Search extends Component {
     
     render() {
         const { results, searching, searched, error } = this.state
-        console.log(results)
         return (
             <div className="search-books">
                 <div className="search-books-bar">
@@ -44,10 +44,9 @@ class Search extends Component {
                         {results && !results.length && searched && <p>Sorry, no books found for this query</p>}
                         {results && results.map(result => (
                             <Book 
-                                key = {result.id} 
-                                title = {result.title} 
-                                authors = {result.authors} 
-                                imageUrl = {result.imageLinks.thumbnail}
+                                key = {result.id}
+                                book = {result}
+                                switchShelf = {this.props.switchShelf}
                             />
                         ))}
                     </ol>
@@ -55,6 +54,10 @@ class Search extends Component {
             </div>
         )
     }
+}
+
+Search.propTypes = {
+    switchShelf: PropTypes.func.isRequired
 }
 
 export default Search

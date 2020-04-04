@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Book from './Book'
 
-const BookShelf = ({ name, books }) => {
+const BookShelf = ({ name, books, switchShelf }) => {
     return (
         <div className="bookshelf">
             <h2 className="bookshelf-title">{name}</h2>
@@ -11,9 +11,8 @@ const BookShelf = ({ name, books }) => {
                 {books.map(book => (
                     <li key = {`${book.id}-li`}>
                         <Book 
-                            title = {book.title}
-                            authors = {book.authors}
-                            imageUrl = {book.imageLinks.thumbnail}
+                            book = {book}
+                            switchShelf = {switchShelf}
                         />
                     </li>
                 ))}
@@ -25,7 +24,8 @@ const BookShelf = ({ name, books }) => {
 
 BookShelf.propTypes = {
     name: PropTypes.string.isRequired,
-    books: PropTypes.arrayOf(PropTypes.object).isRequired
+    books: PropTypes.arrayOf(PropTypes.object).isRequired,
+    switchShelf: PropTypes.func.isRequired
 }
 
 export default BookShelf
