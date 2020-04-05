@@ -1,11 +1,26 @@
-## MyReads
+# MyReads
 
-Welcome to MyReads, the reading list manager.  Just clone this repo, run
+MyReads is a reading list manager, allowing you to find new books for your library and catagorise your library by shelf.
 
-### npm install
+## Installation
 
-and 
+Clone the GitHub repository and install the dependancies using NPM.
 
-### npm start
+```
+$ git clone https://github.com/BLBaylis/MyBooks.git
+$ cd MyBooks
+$ npm install
+```
 
+## Usage
+
+Start the app and a window will open on your localhost at port 3000.
+
+```
+$ npm start
+```
 Enjoy!
+
+## License 
+
+MyReads is distributed under the MIT license.
