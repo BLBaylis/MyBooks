@@ -3,7 +3,21 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import BookShelf from '../components/BookShelf';
 
-const Library = ({currentlyReading, wantToRead, read, switchShelf}) => {
+const Library = ({books, switchShelf}) => {
+  const shelfObjs = [
+    {
+      shelf: 'currentlyReading',
+      label: 'Currently Reading'
+    }, 
+    {
+      shelf: 'wantToRead',
+      label: 'Want To Read'
+    },
+    {
+      shelf: 'read',
+      label: 'Read'
+    } 
+  ]
   return (
       <div className="list-books">
       <div className="list-books-title">
@@ -11,9 +25,14 @@ const Library = ({currentlyReading, wantToRead, read, switchShelf}) => {
       </div>
       <div className="list-books-content">
         <div>
-          <BookShelf name = "Currently Reading" books = {currentlyReading} switchShelf = {switchShelf}/>
-          <BookShelf name = "Want to Read" books = {wantToRead} switchShelf = {switchShelf}/>
-          <BookShelf name = "Read" books = {read} switchShelf = {switchShelf}/>
+          {shelfObjs.map(shelfObj => (
+            <BookShelf 
+              name = {shelfObj.label} 
+              books = {books.filter(book => book.shelf === shelfObj.shelf)}
+              switchShelf = {switchShelf}
+              key = {shelfObj.label}
+            />
+          ))}
         </div>
       </div>
       <div className="open-search">
@@ -24,9 +43,7 @@ const Library = ({currentlyReading, wantToRead, read, switchShelf}) => {
 };
 
 Library.propTypes = {
-  currentlyReading: PropTypes.arrayOf(PropTypes.object).isRequired,
-  wantToRead: PropTypes.arrayOf(PropTypes.object).isRequired,
-  read: PropTypes.arrayOf(PropTypes.object).isRequired,
+  books: PropTypes.arrayOf(PropTypes.object).isRequired,
   switchShelf: PropTypes.func.isRequired
 };
 

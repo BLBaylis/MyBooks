@@ -82,7 +82,8 @@ class Search extends Component {
 };
 
 Search.propTypes = {
-  switchShelf: PropTypes.func.isRequired
+  switchShelf: PropTypes.func.isRequired,
+  books: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default Search;
